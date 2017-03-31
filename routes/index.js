@@ -26,9 +26,26 @@ router.get('/(:name)?', function(req, res, next) {
 
 /* POST compliment. */
 router.post('/', function(req, res, next) {
-	var newCompliment = req.body.compliment;
+	var newCompliment = new Compliment({
+
+		compliment:req.body.compliment
+	});
 
 	// USE MONGOOSE TO SAVE A NEW COMPLIMENT TO THE DATABASE, THEN REDIRECT TO THE ROOT URL
+
+	newCompliment.save(function(err, compliment){
+	if(err){
+		res.status(500).send({
+			status: 'Error',
+			error: err
+		});
+	} else {
+		res.status(200).json({
+			status: 'OK',
+			compliment: compliment
+		})
+	}
+});
 	res.redirect('/');
 });
 

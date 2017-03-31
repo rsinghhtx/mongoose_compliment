@@ -9,8 +9,11 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 
 var app = express();
-
 var mongoose = require('mongoose');
+
+mongoose.connect(process.env.WDI_COMPLIMENT_DB);
+
+
 
 // TODO: You will need to set up an environment variable and use the dotenv package
 //mongoose.connect(process.env.WDI_COMPLIMENT_DB);
