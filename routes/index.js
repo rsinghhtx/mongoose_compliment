@@ -40,13 +40,14 @@ router.post('/', function(req, res, next) {
 			error: err
 		});
 	} else {
-		res.status(200).json({
-			status: 'OK',
-			compliment: compliment
-		})
+		res.redirect('/');
+
+		// res.status(200).json({
+		// 	status: 'OK',
+		// 	compliment: compliment
+		// })
 	}
 });
-	res.redirect('/');
 });
 
 module.exports = router;
